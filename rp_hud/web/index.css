@@ -1,0 +1,95 @@
+:root {
+  --ui-color: rgba(0, 0, 0, 0.7);
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  font-family: "Inter";
+  /* visibility: hidden; */
+}
+
+.identity {
+  display: flex;
+  position: absolute;
+  background-color: var(--ui-color);
+  color: white;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  top: 50px;
+  right: 10px;
+}
+
+.identity .text {
+  font-weight: bold;
+  text-shadow: 1px 1px 4px black;
+}
+
+.identity .icon {
+  margin-right: 4px;
+}
+
+.voice {
+  position: absolute;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  bottom: 35px;
+  left: 325px;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  text-shadow: 1px 1px 4px black;
+  background-color: var(--ui-color);
+}
+
+.voice .waves {
+  visibility: hidden;
+  position: absolute;
+  bottom: 43px;
+  left: 0;
+}
+
+.voice img {
+  width: 50px;
+  opacity: 0.7;
+}
+
+.voice .text {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.status {
+  position: absolute;
+  display: flex;
+  height: 20px;
+  bottom: 35px;
+  left: 380px;
+  padding: 15px;
+  color: white;
+  border-radius: 10px;
+  text-shadow: 1px 1px 4px black;
+  background-color: var(--ui-color);
+}
+
+.status .direction {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.status .streetName {
+  margin-right: 10px;
+}
