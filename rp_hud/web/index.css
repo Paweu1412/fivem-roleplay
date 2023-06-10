@@ -93,3 +93,7 @@ html, body {
 .status .streetName {
   margin-right: 10px;
 }
+
+.hidden {
+  visibility: hidden !important;
+}

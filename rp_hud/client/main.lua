@@ -1,3 +1,5 @@
+local playerLoaded = false
+
 RegisterNetEvent("esx:playerLoaded")
 AddEventHandler("esx:playerLoaded", function(xPlayer, isNew, skin)
   SendNUIMessage({
@@ -8,31 +10,41 @@ AddEventHandler("esx:playerLoaded", function(xPlayer, isNew, skin)
       lastName = xPlayer.lastName
     }
   })
+
+  playerLoaded = true
 end)
 
 local isVoiceActivated = false
 
 Citizen.CreateThread(function()
   while true do
-    if NetworkIsPlayerTalking(PlayerId()) == 1 then
-      if isVoiceActivated == false then
-        SendNUIMessage({
-          state = "showVoiceIndicator",
-        })
-  
-        isVoiceActivated = true
+    if not IsPauseMenuActive() then
+      if NetworkIsPlayerTalking(PlayerId()) == 1 then
+        if isVoiceActivated == false then
+          SendNUIMessage({
+            state = "showVoiceIndicator",
+          })
+    
+          isVoiceActivated = true
+        end
+      else
+        if isVoiceActivated == true then
+          SendNUIMessage({
+            state = "hideVoiceIndicator",
+          })
+    
+          isVoiceActivated = false
+        end
       end
     else
-      if isVoiceActivated == true then
-        SendNUIMessage({
-          state = "hideVoiceIndicator",
-        })
-  
-        isVoiceActivated = false
-      end
+      SendNUIMessage({
+        state = "hideVoiceIndicator",
+      })
+
+      isVoiceActivated = false
     end
 
-    Wait(200)
+    Wait(150)
   end
 end)
 
@@ -107,4 +119,22 @@ Citizen.CreateThread(function()
       
       Wait(100)
     end
+end)
+
+Citizen.CreateThread(function() 
+  while true do
+    if IsPauseMenuActive() and playerLoaded == true then
+      SendNUIMessage({
+        state = "showPlayerHud",
+        show = false
+      })
+    else
+      SendNUIMessage({
+        state = "showPlayerHud",
+        show = true
+      })
+    end
+    
+    Wait(50)
+  end
 end)
