@@ -1,5 +1,3 @@
-local playerLoaded = false
-
 RegisterNetEvent("esx:playerLoaded")
 AddEventHandler("esx:playerLoaded", function(xPlayer, isNew, skin)
   SendNUIMessage({
@@ -10,8 +8,21 @@ AddEventHandler("esx:playerLoaded", function(xPlayer, isNew, skin)
       lastName = xPlayer.lastName
     }
   })
+end)
 
-  playerLoaded = true
+RegisterNetEvent("esx:pauseMenuActive")
+AddEventHandler("esx:pauseMenuActive", function(isActive)
+  if isActive then
+    SendNUIMessage({
+      state = "showPlayerHud",
+      show = false
+    })
+  else
+    SendNUIMessage({
+      state = "showPlayerHud",
+      show = true
+    })
+  end
 end)
 
 local isVoiceActivated = false
@@ -119,22 +130,4 @@ Citizen.CreateThread(function()
       
       Wait(100)
     end
-end)
-
-Citizen.CreateThread(function() 
-  while true do
-    if IsPauseMenuActive() and playerLoaded == true then
-      SendNUIMessage({
-        state = "showPlayerHud",
-        show = false
-      })
-    else
-      SendNUIMessage({
-        state = "showPlayerHud",
-        show = true
-      })
-    end
-    
-    Wait(50)
-  end
 end)
