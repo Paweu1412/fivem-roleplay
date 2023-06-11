@@ -43,7 +43,7 @@ RegisterCommand('range', function(source, args)
 
     if CurrentChosenDistance == destinationRange then return end
 
-    if destinationRange > 0 and destinationRange < #config.ranges + 1 hen
+    if destinationRange > 0 and destinationRange < #config.ranges + 1 then
       CurrentChosenDistance = destinationRange
       CurrentDistanceValue = destinationRange
 
