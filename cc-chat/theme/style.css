@@ -1,0 +1,272 @@
+@import url('https://use.fontawesome.com/releases/v6.2.1/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+.color-1 {color: #e67e22;}
+.color-2 {color: #2ecc71;}
+.color-3 {color: #f1c40f;}
+.color-4 {color: #2980b9;}
+.color-5 {color: #3498db;}
+.color-6 {color: #9b59b6;}
+.color-8 {color: #e74c3c;}
+.color-9 {color: #c0392b;}
+
+.gameColor-w {color: #ffffff;}
+.gameColor-r {color: #ff4444;}
+.gameColor-g {color: #99cc00;}
+.gameColor-y {color: #ffbb33;}
+.gameColor-b {color: #33b5e5;}
+
+* {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  background: #00000000;
+}
+
+.no-grow {
+  flex-grow: 0;
+}
+
+em {
+  font-style: normal;
+}
+
+#app {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  --webkit-font-smoothing: antialiased;
+  --moz-osx-font-smoothing: grayscale;
+  color: #ecf0ff;
+  background-color: transparent;
+}
+
+.chat-window {
+  position: absolute;
+  top: 1.5%;
+  left: 0.8%;
+  width: 30% !important;
+  height: 29.9% !important;
+  max-width: 1000px;
+  background: #00000000 !important;
+  background-color: #00000000 !important;
+  --webkit-animation-duration: 2s;
+}
+
+.chat-messages {
+  position: relative;
+  height: 95%;
+  font-size: 1.0rem;
+  margin: 1%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.chat-input {
+  font-size: 1.65vh;
+  position: absolute;
+  left: 1.1%;
+  top: 31%;
+  width: 29.4%;
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+.prefix {
+  opacity: 0;
+  height: 0px;
+  width: 0px;
+}
+
+.chat-input > div.input {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 40px !important;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 85%;
+  border-radius: 10px;
+}
+
+textarea {
+  font-size: 17;
+  display: block;
+  box-sizing: border-box;
+  padding: 3px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  resize: none;
+  color: #ffffff;
+  background: #00000000 !important;
+  background-color: #00000000 !important;
+  width: 50%;
+  border-width: 0;
+  height: 30px !important;
+  overflow: hidden;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.suggestions {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0px;
+  padding-left: 27px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  border-radius: 10px;
+  width: 100%;
+  padding-left: 0px;
+  padding: 6px;
+  padding-bottom: 3px;
+}
+
+.suggestion {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  opacity: 100%;
+  border-radius: 8px;
+  padding: 7px;
+  font-weight: 600;
+}
+
+.suggestion small {
+  font-size: medium;
+  color: #989898;
+}
+
+.disabled {
+ color: #989898 !important;
+ background-color: rgba(252, 253, 254, 0) !important;
+}
+
+
+.msg {
+  margin-bottom: 5px;
+}
+
+.twitter
+{
+  height: 10%;
+  width: 90%;
+  color: White;
+  background: #FFFFFF;
+  border-radius: 5px;
+  color: #0000;
+}
+
+.multiline {
+  margin-left: 1.5rem;
+  text-indent: -1.5rem;
+  white-space: pre-line;
+}
+
+.help {
+  color: #FFFFFF;
+}
+
+.disabled {
+  color: #FFFFFF;
+}
+
+.suggestion {
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+#notification {
+  display: flex;
+  padding: 6px;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: #FEFEFF;
+  border-radius: 10px;
+  max-width: 98%;
+  margin-bottom: 5px;
+  width: fit-content;
+  min-width: 15%;
+  word-wrap: break-word;
+}
+
+#color-box {
+  width: 10px;
+  float: left;
+  min-height: 100%;
+  border-radius: 8px;
+  flex-shrink:0;
+}
+
+#info {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: auto;
+  max-width: 100%;
+  position: relative;
+  min-width: 85%;
+}
+
+#top-info {
+  padding-bottom: 5px;
+}
+
+#left-info {
+  float:left;
+  width:auto;
+  margin-top: 2px;
+}
+
+#right-info{
+  float:right;
+  width:50%;
+}
+
+#title {
+  float:left;
+  width: auto;
+  padding-right: 10px;
+}
+
+#sub-title {
+  float:right;
+  color: #C6C6C6;
+  padding-right: 10px;
+}
+
+#time {
+  float: right;
+  right: 5px;
+  color: #C6C6C6;
+  margin-top: 2px;
+}
+
+.notifyjs-happyblue-base {
+  white-space: nowrap;
+  background-color: lightblue;
+  padding: 5px;
+}
+
+.notifyjs-happyblue-superblue {
+  color: white;
+  background-color: blue;
+}
