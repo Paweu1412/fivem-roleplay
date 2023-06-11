@@ -14,7 +14,7 @@ file 'theme/style.css'
 chat_theme 'ccChat' {
     styleSheet = 'theme/style.css',
     msgTemplates = {
-        ccChat = '<div id="notification"><div id="info"><div id="top-info"><div id="left-info"><h2 id="sub-title">{2}</h2></div><h2 id="time">{3}</h2></div><div id="bottom-info"><br><p id="text">{4}</p></div></div>'
+        ccChat = '<div id="notification" style="background-color: {0} !important"><div id="info"><div id="bottom-info"><i class="{1}"></i><p id="text">{4}</p></div></div>'
     }
 }
 

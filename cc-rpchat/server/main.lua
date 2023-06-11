@@ -39,7 +39,7 @@ RegisterCommand('ooc', function(source, args, rawCommand)
     if config.DiscordWebhook then
         sendToDiscord(16753920, playerName.." has executed /"..rawCommand:sub(1, 3), '**Command arguments**: '..msg, "Identifiers: \n"..GetPlayerIdentifier(source, 0).."\n"..GetPlayerIdentifier(source, 1).."\n"..GetPlayerIdentifier(source, 2).."\n"..GetPlayerIdentifier(source, 3))
     end
-    TriggerClientEvent('cc-rpchat:addMessage', -1, '#3498db', 'fa-solid fa-globe', 'OOC ● ID: '..source, msg)
+    TriggerClientEvent('cc-rpchat:addMessage', -1, 'rgba(0, 0, 0, 0.5)', 'fa-sharp fa-solid fa-comment fa-lg', '', '('..source..'): ' ..msg)
 end, false)
 
 AddEventHandler('chatMessage', function(source, name, message)
@@ -48,7 +48,7 @@ AddEventHandler('chatMessage', function(source, name, message)
     if message:sub(1, 1) == '/' then
         return
     else
-        TriggerClientEvent('cc-rpchat:addMessage', -1, '#3498db', 'fa-solid fa-globe', 'OOC ● ID: '..source, message) 
+        TriggerClientEvent('cc-rpchat:addMessage', -1, 'rgba(0, 0, 0, 0.5)', 'fa-sharp fa-solid fa-comment fa-lg', '', '('..source..'): ' ..message) 
     end
 end)
 
@@ -60,7 +60,7 @@ RegisterCommand('me', function(source, args, rawCommand)
     if config.DiscordWebhook then
         sendToDiscord(16753920, playerName.." has executed /"..rawCommand:sub(1, 2), '**Command arguments**: '..msg, "Identifiers: \n"..GetPlayerIdentifier(source, 0).."\n"..GetPlayerIdentifier(source, 1).."\n"..GetPlayerIdentifier(source, 2).."\n"..GetPlayerIdentifier(source, 3))
     end
-    TriggerClientEvent('cc-rpchat:addProximityMessage', -1, '#ff0000', 'fa-solid fa-person', 'ME ● ID: '..source, msg, source, GetEntityCoords(GetPlayerPed(source)))
+    TriggerClientEvent('cc-rpchat:addProximityMessage', -1, 'rgba(245, 40, 193, 0.5)', 'fa-sharp fa-solid fa-comment-quote fa-lg', '', '('..source..'): ' ..msg, source, GetEntityCoords(GetPlayerPed(source)))
     --TriggerClientEvent('cc-rpchat:addMessage', -1, '#f39c12', 'fa-solid fa-person', 'Me | '..playerName, msg)
 end, false)
 
@@ -80,7 +80,7 @@ RegisterCommand('do', function(source, args, rawCommand)
     if config.DiscordWebhook then
         sendToDiscord(16753920, playerName.." has executed /"..rawCommand:sub(1, 2), '**Command arguments**: '..msg, "Identifiers: \n"..GetPlayerIdentifier(source, 0).."\n"..GetPlayerIdentifier(source, 1).."\n"..GetPlayerIdentifier(source, 2).."\n"..GetPlayerIdentifier(source, 3))
     end
-    TriggerClientEvent('cc-rpchat:addProximityMessage', -1, '#2ecc71', 'fa-solid fa-person-digging', 'DO ● ID: '..source, msg, source, GetEntityCoords(GetPlayerPed(source)))
+    TriggerClientEvent('cc-rpchat:addProximityMessage', -1, 'rgba(120, 146, 255, 0.5)', 'fa-sharp fa-solid fa-comment-quote fa-lg', '', '('..source..'): ' ..msg, source, GetEntityCoords(GetPlayerPed(source)))
 end, false)
 
 -- News
@@ -122,23 +122,23 @@ end, false)
 -- end, false)
 
 -- Tweet
-RegisterCommand('twt', function(source, args, rawCommand)
-    local playerName
-    local msg = rawCommand:sub(5)
-    if config.esx then
-        local xPlayer = ESX.GetPlayerFromId(source)
-        playerName = xPlayer.getName()
-    elseif config.qbcore then
-        local xPlayer = QBCore.Functions.GetPlayer(source)
-        playerName = xPlayer.PlayerData.charinfo.firstname .. "," .. xPlayer.PlayerData.charinfo.lastname 
-    else
-        playerName = GetPlayerName(source)
-    end
-    if config.DiscordWebhook then
-        sendToDiscord(16753920, playerName.." has executed /"..rawCommand:sub(1, 3), '**Command arguments**: '..msg, "Identifiers: \n"..GetPlayerIdentifier(source, 0).."\n"..GetPlayerIdentifier(source, 1).."\n"..GetPlayerIdentifier(source, 2).."\n"..GetPlayerIdentifier(source, 3))
-    end
-    TriggerClientEvent('cc-rpchat:addMessage', -1, '#2980b9', 'fa-brands fa-twitter', 'TWITTER ● @'..playerName, msg)
-end, false)
+-- RegisterCommand('twt', function(source, args, rawCommand)
+--     local playerName
+--     local msg = rawCommand:sub(5)
+--     if config.esx then
+--         local xPlayer = ESX.GetPlayerFromId(source)
+--         playerName = xPlayer.getName()
+--     elseif config.qbcore then
+--         local xPlayer = QBCore.Functions.GetPlayer(source)
+--         playerName = xPlayer.PlayerData.charinfo.firstname .. "," .. xPlayer.PlayerData.charinfo.lastname 
+--     else
+--         playerName = GetPlayerName(source)
+--     end
+--     if config.DiscordWebhook then
+--         sendToDiscord(16753920, playerName.." has executed /"..rawCommand:sub(1, 3), '**Command arguments**: '..msg, "Identifiers: \n"..GetPlayerIdentifier(source, 0).."\n"..GetPlayerIdentifier(source, 1).."\n"..GetPlayerIdentifier(source, 2).."\n"..GetPlayerIdentifier(source, 3))
+--     end
+--     TriggerClientEvent('cc-rpchat:addMessage', -1, '#2980b9', 'fa-brands fa-twitter', 'TWITTER ● @'..playerName, msg)
+-- end, false)
 
 -- -- Anon
 -- RegisterCommand('anon', function(source, args, rawCommand)

@@ -2,6 +2,7 @@ local ccChat = exports['cc-chat']
 
 RegisterNetEvent('cc-rpchat:addMessage')
 AddEventHandler('cc-rpchat:addMessage', function(color, icon, subtitle, msg, showTime)
+  print(color)
     if showTime ~= false then
         timestamp = ccChat:getTimestamp()
     else

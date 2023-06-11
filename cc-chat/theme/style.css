@@ -1,4 +1,4 @@
-@import url('https://use.fontawesome.com/releases/v6.2.1/css/all.css');
+@import url('https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 .color-1 {color: #e67e22;}
 .color-2 {color: #2ecc71;}
@@ -193,8 +193,8 @@ h2 {
 p {
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: 2px;
 }
+
 
 #notification {
   display: flex;
@@ -218,8 +218,8 @@ p {
 }
 
 #info {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   width: auto;
   max-width: 100%;
   position: relative;
@@ -239,6 +239,15 @@ p {
 #right-info{
   float:right;
   width:50%;
+}
+
+#bottom-info {
+  display: flex;
+  align-items: center;
+}
+
+i {
+  margin-right: 5px;
 }
 
 #title {
