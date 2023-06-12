@@ -12,6 +12,11 @@ Citizen.CreateThread(function()
     end
 end)
 
+    
+local function areOnlySpaces(str)
+  return str:match("^%s*$")
+end
+
 AddEventHandler('onResourceStart', function(resourceName)
     if resourceName == 'esx_rpchat' then
         StopResource(resourceName)
@@ -32,23 +37,15 @@ AddEventHandler('onResourceStart', function(resourceName)
     end, 'GET', '')
 end)
 
--- OOC
-RegisterCommand('ooc', function(source, args, rawCommand)
-    local msg = rawCommand:sub(5)
-    
-    if config.DiscordWebhook then
-        sendToDiscord(16753920, playerName.." has executed /"..rawCommand:sub(1, 3), '**Command arguments**: '..msg, "Identifiers: \n"..GetPlayerIdentifier(source, 0).."\n"..GetPlayerIdentifier(source, 1).."\n"..GetPlayerIdentifier(source, 2).."\n"..GetPlayerIdentifier(source, 3))
-    end
-    TriggerClientEvent('cc-rpchat:addMessage', -1, 'rgba(0, 0, 0, 0.5)', 'fa-sharp fa-solid fa-comment fa-lg', '', '('..source..'): ' ..msg)
-end, false)
-
 AddEventHandler('chatMessage', function(source, name, message)
     CancelEvent()
     local playerName
     if message:sub(1, 1) == '/' then
         return
     else
-        TriggerClientEvent('cc-rpchat:addMessage', -1, 'rgba(0, 0, 0, 0.5)', 'fa-sharp fa-solid fa-comment fa-lg', '', '('..source..'): ' ..message) 
+      if areOnlySpaces(message) ~= nil then return end
+
+        TriggerClientEvent('cc-rpchat:addProximityMessage', -1, 'rgba(0, 0, 0, 0.5)', 'fa-sharp fa-solid fa-comment fa-lg', '', '('..source..'): ' ..message, source, GetEntityCoords(GetPlayerPed(source))) 
     end
 end)
 
@@ -56,6 +53,8 @@ end)
 RegisterCommand('me', function(source, args, rawCommand)
     local playerName
     local msg = rawCommand:sub(4)
+
+    if areOnlySpaces(msg) ~= nil then return end
 
     if config.DiscordWebhook then
         sendToDiscord(16753920, playerName.." has executed /"..rawCommand:sub(1, 2), '**Command arguments**: '..msg, "Identifiers: \n"..GetPlayerIdentifier(source, 0).."\n"..GetPlayerIdentifier(source, 1).."\n"..GetPlayerIdentifier(source, 2).."\n"..GetPlayerIdentifier(source, 3))
@@ -68,6 +67,9 @@ end, false)
 RegisterCommand('do', function(source, args, rawCommand)
     local playerName
     local msg = rawCommand:sub(4)
+
+    if areOnlySpaces(msg) ~= nil then return end
+
     if config.esx then
         local xPlayer = ESX.GetPlayerFromId(source)
         playerName = xPlayer.getName()
@@ -82,6 +84,22 @@ RegisterCommand('do', function(source, args, rawCommand)
     end
     TriggerClientEvent('cc-rpchat:addProximityMessage', -1, 'rgba(120, 146, 255, 0.5)', 'fa-sharp fa-solid fa-comment-quote fa-lg', '', '('..source..'): ' ..msg, source, GetEntityCoords(GetPlayerPed(source)))
 end, false)
+
+RegisterCommand("try", function(source, args, rawCommand) 
+  local msg = rawCommand:sub(4)
+
+  if areOnlySpaces(msg) ~= nil then return end
+
+  local function successOfActivity()
+    return math.random() < 0.5
+  end
+
+  if successOfActivity() then
+    TriggerClientEvent('cc-rpchat:addProximityMessage', -1, 'rgba(50, 168, 82, 0.5)', 'fa-sharp fa-solid fa-check fa-lg', '', '('..source..'): Odniósł sukces, próbując ' ..msg, source, GetEntityCoords(GetPlayerPed(source)))
+  else 
+    TriggerClientEvent('cc-rpchat:addProximityMessage', -1, 'rgba(168, 50, 50, 0.5)', 'fa-sharp fa-solid fa-xmark fa-lg', '', '('..source..'): Zawiódł, próbując ' ..msg, source, GetEntityCoords(GetPlayerPed(source)))
+  end
+end)
 
 -- News
 -- RegisterCommand('news', function(source, args, rawCommand)
@@ -160,19 +178,19 @@ end, false)
 -- end, false)
 
 -- Player join and leave messages
-if config.connectionMessages then
-    AddEventHandler('playerJoining', function()
-        local playerName
-        playerName = GetPlayerName(source)
-        TriggerClientEvent('cc-rpchat:addMessage', -1, '#2ecc71', 'fa-solid fa-plus', playerName..' joined.', '', false)
-    end)
+-- if config.connectionMessages then
+--     AddEventHandler('playerJoining', function()
+--         local playerName
+--         playerName = GetPlayerName(source)
+--         TriggerClientEvent('cc-rpchat:addMessage', -1, '#2ecc71', 'fa-solid fa-plus', playerName..' joined.', '', false)
+--     end)
 
-    AddEventHandler('playerDropped', function(reason)
-        local playerName
-        playerName = GetPlayerName(source)
-        TriggerClientEvent('cc-rpchat:addMessage', -1, '#e74c3c', 'fa-solid fa-minus', playerName..' left (' .. reason .. ')', '', false)
-    end)
-end
+--     AddEventHandler('playerDropped', function(reason)
+--         local playerName
+--         playerName = GetPlayerName(source)
+--         TriggerClientEvent('cc-rpchat:addMessage', -1, '#e74c3c', 'fa-solid fa-minus', playerName..' left (' .. reason .. ')', '', false)
+--     end)
+-- end
 
 -- Discord webhook
 function sendToDiscord(color, name, message, footer)

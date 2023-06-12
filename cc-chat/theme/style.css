@@ -247,7 +247,9 @@ p {
 }
 
 i {
+  text-align: center;
   margin-right: 5px;
+  width: 15px;
 }
 
 #title {
